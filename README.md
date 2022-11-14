@@ -500,7 +500,6 @@ export class MyRoute {
   myDelete = () => {
     // Route method
   }
-
 }
 ```
 
