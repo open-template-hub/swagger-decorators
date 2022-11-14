@@ -1,0 +1,6 @@
+{{SCHEMA_NAME}}: {
+  type: 'object',
+  properties: {
+    {{PROPERTIES}}
+  },
+},

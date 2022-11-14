@@ -1,0 +1,13 @@
+{{HTTP_METHOD}}: {
+  tags: [{{TAGS}}],
+  summary: '{{SUMMARY}}',
+  description: '{{DESCRIPTION}}',
+  operationId: '{{NAME}}',
+  parameters: [{{PARAMETERS}}],
+  requestBody: {
+    {{REQUEST_BODY}}
+  },
+  responses: {
+    {{RESPONSES}}
+  },
+},

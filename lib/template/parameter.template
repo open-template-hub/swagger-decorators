@@ -1,0 +1,10 @@
+{{PARAMETER_PROP_NAME}}: {
+  in: '{{PARAMETER_IN}}',
+  name: '{{PARAMETER_NAME}}',
+  schema: {
+    type: '{{PARAMETER_TYPE}}',
+  },
+  required: {{PARAMETER_REQUIRED}},
+  description: '{{PARAMETER_DESCRIPTION}}',
+  example: {{PARAMETER_EXAMPLE}},
+},

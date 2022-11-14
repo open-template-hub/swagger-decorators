@@ -1,0 +1,33 @@
+{
+  "name": "@open-template-hub/swagger-decorators",
+  "description": "This library contains methods and decorators to ease and automate swagger documentation.",
+  "website": "https://opentemplatehub.com",
+  "repository": "https://github.com/open-template-hub/swagger-decorators",
+  "logo": "https://raw.githubusercontent.com/open-template-hub/open-template-hub.github.io/master/assets/logo/brand-logo.png",
+  "keywords": [
+    "swagger",
+    "swagger-decorators",
+    "swagger ui",
+    "swagger documentation",
+    "swagger document",
+    "annotation",
+    "swagger annotation",
+    "swagger decorator",
+    "swagger typescript",
+    "swagger ts",
+    "server",
+    "rest",
+    "node",
+    "nodejs",
+    "typescript",
+    "cli",
+    "backend",
+    "template",
+    "open template hub",
+    "open template hub library",
+    "util",
+    "utility",
+    "utilities",
+    "token"
+  ]
+}

@@ -1,0 +1,10 @@
+ '{{RESPONSE_CODE}}': {
+  description: '{{RESPONSE_DESCRIPTION}}',
+  content: {
+    'application/json': {
+      schema: {
+        $ref: '#/components/schemas/{{RESPONSE_SCHEMA}}',
+      },
+    },
+  },
+},

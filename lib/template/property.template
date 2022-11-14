@@ -1,0 +1,6 @@
+{{PROPERTY_NAME}}: {
+  type: '{{PROPERTY_TYPE}}',
+  description: '{{PROPERTY_DESCRIPTION}}',
+  example: {{PROPERTY_EXAMPLE}},
+  required: {{PROPERTY_REQUIRED}},
+},

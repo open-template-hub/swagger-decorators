@@ -1,0 +1,5 @@
+{{IMPORTS}}
+
+export const {{PROPERTY_NAME}} = {
+  {{ITEMS}}
+}
