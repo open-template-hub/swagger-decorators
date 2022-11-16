@@ -8,6 +8,7 @@ export * from './lib/enum/parameter-in.enum';
 export * from './lib/enum/swagger-document-type.enum';
 export * from './lib/enum/swagger-template-type.enum';
 export * from './lib/enum/swagger-schema-type.enum';
+export * from './lib/enum/swagger-security-scheme.enum';
 
 /** Utils */
 export * from './lib/util/file.util';

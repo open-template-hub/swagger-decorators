@@ -1,4 +1,5 @@
 {{HTTP_METHOD}}: {
+  security: [{{SECURITY_SCHEME}}],
   tags: [{{TAGS}}],
   summary: '{{SUMMARY}}',
   description: '{{DESCRIPTION}}',
