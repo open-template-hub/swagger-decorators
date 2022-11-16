@@ -5,7 +5,7 @@
 </p>
 
 <h1 align="center">
-Open Template Hub - Swagger Decorators v1
+Open Template Hub - Swagger Decorators v4
 </h1>
 
 [![Version](https://img.shields.io/npm/v/@open-template-hub/swagger-decorators?color=CB3837&style=for-the-badge&logo=npm)](https://www.npmjs.com/package/@open-template-hub/swagger-decorators)
