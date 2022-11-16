@@ -1,7 +1,7 @@
 {
   "name": "@open-template-hub/swagger-decorators",
   "description": "This library contains methods and decorators to ease and automate swagger documentation.",
-  "version": "4.0.0",
+  "version": "4.0.1",
   "license": "MIT",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
