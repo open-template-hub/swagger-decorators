@@ -211,6 +211,9 @@ interface SwaggerMethod {
   // Responses that method will return
   responses: Array<SwaggerResponse>;
 
+  // Identifies the security scheme
+  security?: SwaggerSecurityScheme;
+
   // Tags that method classified
   tags?: Array<SwaggerTag>;
 
@@ -286,6 +289,7 @@ import {
   SwaggerResponse,
   SwaggerRoute,
   SwaggerSchema,
+  SwaggerSecurityScheme,
   SwaggerTag,
   SwMethod,
   SwParam,
@@ -345,6 +349,7 @@ export class MyRoute {
       name: 'myGet',
       summary: 'Summary of the method',
       description: 'Description of the method',
+      security: SwaggerSecurityScheme.BEARER,
       tags: [mySwaggerTag],
       parameterSchemas: ['MyParameterSchema'],
       responses: [
@@ -374,6 +379,7 @@ export class MyRoute {
       name: 'myPost',
       summary: 'Summary of the method',
       description: 'Description of the method',
+      security: SwaggerSecurityScheme.BEARER,
       tags: [mySwaggerTag],
       requestBody: {
         content: {
@@ -410,6 +416,7 @@ export class MyRoute {
       name: 'myPut',
       summary: 'Summary of the method',
       description: 'Description of the method',
+      security: SwaggerSecurityScheme.BEARER,
       tags: [mySwaggerTag],
       requestBody: {
         content: {
@@ -446,6 +453,7 @@ export class MyRoute {
       name: 'myPatch',
       summary: 'Summary of the method',
       description: 'Description of the method',
+      security: SwaggerSecurityScheme.BEARER,
       tags: [mySwaggerTag],
       requestBody: {
         content: {
@@ -482,6 +490,7 @@ export class MyRoute {
       name: 'myDelete',
       summary: 'Summary of the method',
       description: 'Description of the method',
+      security: SwaggerSecurityScheme.BEARER,
       tags: [mySwaggerTag],
       parameterSchemas: ['MyDeleteSchema'],
       responses: [
