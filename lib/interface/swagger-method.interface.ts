@@ -1,4 +1,5 @@
 import { HttpMethod } from '../enum/http-method.enum';
+import { SwaggerSecurityScheme } from '../enum/swagger-security-scheme.enum';
 import { SwaggerRequestBody } from './swagger-request-body.interface';
 import { SwaggerResponse } from './swagger-response.interface';
 import { SwaggerRoute } from './swagger-route.interface';
@@ -14,6 +15,7 @@ export interface SwaggerMethod {
   description: string;
   httpMethod: HttpMethod;
   responses: Array<SwaggerResponse>;
+  security?: SwaggerSecurityScheme;
   tags?: Array<SwaggerTag>;
   parameterSchemas?: Array<string>;
   requestBody?: SwaggerRequestBody;

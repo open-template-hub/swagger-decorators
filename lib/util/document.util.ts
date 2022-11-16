@@ -251,6 +251,10 @@ export class DocumentUtil {
       var routeMethod = routeMethods.find(routeMethodQuery);
 
       var routeMethodStream = routeMethodTemplate
+        .replace(
+          '{{SECURITY_SCHEME}}',
+          this.fileUtil.getSecurityScheme(m.security)
+        )
         .replace('{{HTTP_METHOD}}', m.httpMethod.toString())
         .replace('{{TAGS}}', tagStream)
         .replace('{{SUMMARY}}', m.summary)

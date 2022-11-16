@@ -24,6 +24,7 @@ import * as Path from 'path';
 import { SwaggerRoute } from '../interface/swagger-route.interface';
 import { SwaggerTemplateType } from '../enum/swagger-template-type.enum';
 import { SwaggerWithContent } from '../interface/swagger-with-content.interface';
+import { SwaggerSecurityScheme } from '../enum/swagger-security-scheme.enum';
 
 export class FileUtil {
   /**
@@ -219,6 +220,22 @@ export class FileUtil {
       (route.name.startsWith('/') ? route.name : '/' + route.name) + fullRoute;
     if (!route.parent) return fullRoute;
     return this.getFullMethodPath(route.parent, fullRoute);
+  };
+
+  /**
+   * Gets applicable security scheme
+   * @param scheme Security Scheme
+   * @returns Applicable Security Scheme
+   */
+  getSecurityScheme = (scheme?: SwaggerSecurityScheme) => {
+    if (!scheme) return '';
+
+    switch (scheme) {
+      case SwaggerSecurityScheme.BEARER:
+        return '{ BearerAuth: [] }';
+      default:
+        return '';
+    }
   };
 
   /**
