@@ -13,6 +13,19 @@ Open Template Hub - Swagger Decorators v1
 
 This library contains methods and decorators to ease and automate [Swagger](https://swagger.io) documentation.
 
+## Topics
+* [About the NPM Package](#about-the-npm-package)
+  * [Package Installation](#package-installation)
+* [Using OTH Swagger Decorators](#using-oth-swagger-decorators)
+  * [@SwRoute](#swroute)
+  * [@SwTag](#swtag)
+  * [@SwSchema](#swschema)
+  * [@SwProp](#swprop)
+  * [@SwParam](#swparam)
+  * [@SwMethod](#swmethod)
+  * [Full Route Example Including All Method Types](#full-route-example-including-all-method-types)
+* [Automation of Swagger Document Generation](#automation-of-swagger-document-generation)
+
 ## About the NPM Package
 
 ### Package Installation
@@ -509,7 +522,7 @@ export class MyRoute {
 }
 ```
 
-### Automation of Swagger Document Generation
+## Automation of Swagger Document Generation
 
 Add this codeblock to your index file, to the place after Routes are mounted where you are starting node application.
 This codeblock will generate all Swagger Documents by reading decorators.
