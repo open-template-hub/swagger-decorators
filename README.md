@@ -98,6 +98,8 @@ You must specify SwaggerRoute as the first decorator argument for both Schema ty
 The only difference for decoration, if you are defining a schema for parameters, you must set the second argument of
 @SwSchema, which is isParameterSchema, to **true**.
 
+You can use Parameter Schema only with @SwParam parameters, and Property Schema can only be used with @SwProp properties.
+
 Here you can see the example for Property Schema:
 
 ```ts
@@ -176,7 +178,7 @@ import {
 
 const mySwaggerRoute = { name: 'MyRoute' } as SwaggerRoute;
 
-@SwSchema(mySwaggerRoute)
+@SwSchema(mySwaggerRoute, true)
 export class MyParameterSchema {
   @SwParam('Filter for reporter', ParameterIn.QUERY)
   reporter: string = 'service-user';
@@ -322,7 +324,7 @@ export class MyPatchSchema {
   payload: any = { test: true };
 }
 
-@SwSchema(mySwaggerRoute)
+@SwSchema(mySwaggerRoute, true)
 export class MyParameterSchema {
   @SwParam('Filter for reporter', ParameterIn.QUERY)
   reporter: string = 'service-user';
@@ -330,7 +332,7 @@ export class MyParameterSchema {
   limit: number = 5;
 }
 
-@SwSchema(mySwaggerRoute)
+@SwSchema(mySwaggerRoute, true)
 export class MyDeleteSchema {
   @SwParam('Identifier of the object that will be deleted', ParameterIn.QUERY)
   id: string = '8034c607-a41d-4f29-8737-4cc9233a8b53';
