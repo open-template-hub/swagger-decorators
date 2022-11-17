@@ -561,6 +561,12 @@ if (
 }
 ```
 
+And when your decorators are stated in your code and ready, you can run and automate simply the "swagger" command:
+
+```
+npm run swagger
+```
+
 # Sponsors
 
 No sponsors yet! **Will you be the first?**
