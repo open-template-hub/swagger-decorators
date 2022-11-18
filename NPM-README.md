@@ -1,11 +1,11 @@
 <p align="center">
   <a href="https://www.linkedin.com/company/open-template-hub">
-    <img src="https://raw.githubusercontent.com/open-template-hub/open-template-hub.github.io/master/assets/logo/brand-logo.png" alt="Logo" width=200>
+    <img src="https://raw.githubusercontent.com/open-template-hub/open-template-hub.github.io/master/assets/logo/library/swagger-decorators-logo.png" alt="Logo" width=200>
   </a>
 </p>
 
 <h1 align="center">
-Open Template Hub - Swagger Decorators v1
+Open Template Hub - Swagger Decorators v4
 </h1>
 
 [![GitHubRepo](https://img.shields.io/badge/GitHub-Repository-24292e.svg?style=for-the-badge&logo=github)](https://github.com/open-template-hub/swagger-decorators)
