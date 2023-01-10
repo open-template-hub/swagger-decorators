@@ -5,7 +5,7 @@
 </p>
 
 <h1 align="center">
-Open Template Hub - Swagger Decorators v4
+Open Template Hub - Swagger Decorators v5
 </h1>
 
 [![Version](https://img.shields.io/npm/v/@open-template-hub/swagger-decorators?color=CB3837&style=for-the-badge&logo=npm)](https://www.npmjs.com/package/@open-template-hub/swagger-decorators)
@@ -20,16 +20,17 @@ Open Template Hub - Swagger Decorators v4
 This library contains methods and decorators to ease and automate [Swagger](https://swagger.io) documentation.
 
 ## Topics
+
 * [About the NPM Package](#about-the-npm-package)
-  * [Package Installation](#package-installation)
+    * [Package Installation](#package-installation)
 * [Using OTH Swagger Decorators](#using-oth-swagger-decorators)
-  * [@SwRoute](#swroute)
-  * [@SwTag](#swtag)
-  * [@SwSchema](#swschema)
-  * [@SwProp](#swprop)
-  * [@SwParam](#swparam)
-  * [@SwMethod](#swmethod)
-  * [Full Route Example Including All Method Types](#full-route-example-including-all-method-types)
+    * [@SwRoute](#swroute)
+    * [@SwTag](#swtag)
+    * [@SwSchema](#swschema)
+    * [@SwProp](#swprop)
+    * [@SwParam](#swparam)
+    * [@SwMethod](#swmethod)
+    * [Full Route Example Including All Method Types](#full-route-example-including-all-method-types)
 * [Automation of Swagger Document Generation](#automation-of-swagger-document-generation)
 
 ## About the NPM Package
@@ -56,7 +57,7 @@ import {
 
 const mySwaggerRoute = { name: 'MyRoute' } as SwaggerRoute;
 
-@SwRoute(mySwaggerRoute)
+@SwRoute( mySwaggerRoute )
 export class MyRoute {
   /// Route Methods
 }
@@ -89,9 +90,9 @@ const mySecondSwaggerTag = {
   route: mySwaggerRoute,
 } as SwaggerTag;
 
-@SwRoute(mySwaggerRoute)
-@SwTag(mySwaggerTag)
-@SwTag(mySecondSwaggerTag)
+@SwRoute( mySwaggerRoute )
+@SwTag( mySwaggerTag )
+@SwTag( mySecondSwaggerTag )
 export class MyRoute {
   /// Route Methods
 }
@@ -123,7 +124,7 @@ import {
 
 const mySwaggerRoute = { name: 'MyRoute' } as SwaggerRoute;
 
-@SwSchema(mySwaggerRoute)
+@SwSchema( mySwaggerRoute )
 export class MySchema {
   // Schema Properties
 }
@@ -139,7 +140,7 @@ import {
 
 const mySwaggerRoute = { name: 'MyRoute' } as SwaggerRoute;
 
-@SwSchema(mySwaggerRoute, true)
+@SwSchema( mySwaggerRoute, true )
 export class MyParameterSchema {
   // Schema Parameters
 }
@@ -162,13 +163,13 @@ import {
 
 const mySwaggerRoute = { name: 'MyRoute' } as SwaggerRoute;
 
-@SwSchema(mySwaggerRoute)
+@SwSchema( mySwaggerRoute )
 export class MySchema {
-  @SwProp('The source application or service', true)
+  @SwProp( 'The source application or service', true )
   source: string = 'OTH Web UI';
-  @SwProp('Event creation time', true)
+  @SwProp( 'Event creation time', true )
   timestamp: number = 1666476669;
-  @SwProp('Can contain any kind of data payload')
+  @SwProp( 'Can contain any kind of data payload' )
   payload: any = { test: true };
 }
 ```
@@ -191,16 +192,17 @@ import {
 
 const mySwaggerRoute = { name: 'MyRoute' } as SwaggerRoute;
 
-@SwSchema(mySwaggerRoute, true)
+@SwSchema( mySwaggerRoute, true )
 export class MyParameterSchema {
-  @SwParam('Filter for reporter', ParameterIn.QUERY)
+  @SwParam( 'Filter for reporter', ParameterIn.QUERY )
   reporter: string = 'service-user';
-  @SwParam('Limit for records to return', ParameterIn.QUERY, true)
+  @SwParam( 'Limit for records to return', ParameterIn.QUERY, true )
   limit: number = 5;
 }
 ```
 
 ### @SwMethod
+
 This decorator helps you to define new method and can be specified on top of route Methods.
 This decorator takes only one argument which is SwaggerMethod.
 
@@ -321,210 +323,210 @@ const mySwaggerTag = {
   route: mySwaggerRoute,
 } as SwaggerTag;
 
-@SwSchema(mySwaggerRoute)
+@SwSchema( mySwaggerRoute )
 export class MySchema {
-  @SwProp('The source application or service', true)
+  @SwProp( 'The source application or service', true )
   source: string = 'OTH Web UI';
-  @SwProp('Event creation time', true)
+  @SwProp( 'Event creation time', true )
   timestamp: number = 1666476669;
-  @SwProp('Can contain any kind of data payload')
+  @SwProp( 'Can contain any kind of data payload' )
   payload: any = { test: true };
 }
 
-@SwSchema(mySwaggerRoute)
+@SwSchema( mySwaggerRoute )
 export class MyPatchSchema {
-  @SwProp('Can contain any kind of data payload')
+  @SwProp( 'Can contain any kind of data payload' )
   payload: any = { test: true };
 }
 
-@SwSchema(mySwaggerRoute, true)
+@SwSchema( mySwaggerRoute, true )
 export class MyParameterSchema {
-  @SwParam('Filter for reporter', ParameterIn.QUERY)
+  @SwParam( 'Filter for reporter', ParameterIn.QUERY )
   reporter: string = 'service-user';
-  @SwParam('Limit for records to return', ParameterIn.QUERY, true)
+  @SwParam( 'Limit for records to return', ParameterIn.QUERY, true )
   limit: number = 5;
 }
 
-@SwSchema(mySwaggerRoute, true)
+@SwSchema( mySwaggerRoute, true )
 export class MyDeleteSchema {
-  @SwParam('Identifier of the object that will be deleted', ParameterIn.QUERY)
+  @SwParam( 'Identifier of the object that will be deleted', ParameterIn.QUERY )
   id: string = '8034c607-a41d-4f29-8737-4cc9233a8b53';
 }
 
-@SwRoute(mySwaggerRoute)
-@SwTag(mySwaggerTag)
+@SwRoute( mySwaggerRoute )
+@SwTag( mySwaggerTag )
 export class MyRoute {
 
-  @SwMethod({
-      httpMethod: HttpMethod.GET,
-      route: {
-        name: 'Sub-route name',
-        parent: mySwaggerRoute,
-      } as SwaggerRoute,
-      name: 'myGet',
-      summary: 'Summary of the method',
-      description: 'Description of the method',
-      security: SwaggerSecurityScheme.BEARER,
-      tags: [mySwaggerTag],
-      parameterSchemas: ['MyParameterSchema'],
-      responses: [
-        {
-          content: {
-            schema: {
-              name: 'MySchema',
-              route: mySwaggerRoute,
-            } as SwaggerSchema,
-            arrayOf: true,
-          },
-          responseCode: 200,
-          description: 'OK',
-        } as SwaggerResponse,
-      ],
-    } as SwaggerMethod)
+  @SwMethod( {
+    httpMethod: HttpMethod.GET,
+    route: {
+      name: 'Sub-route name',
+      parent: mySwaggerRoute,
+    } as SwaggerRoute,
+    name: 'myGet',
+    summary: 'Summary of the method',
+    description: 'Description of the method',
+    security: SwaggerSecurityScheme.BEARER,
+    tags: [ mySwaggerTag ],
+    parameterSchemas: [ 'MyParameterSchema' ],
+    responses: [
+      {
+        content: {
+          schema: {
+            name: 'MySchema',
+            route: mySwaggerRoute,
+          } as SwaggerSchema,
+          arrayOf: true,
+        },
+        responseCode: 200,
+        description: 'OK',
+      } as SwaggerResponse,
+    ],
+  } as SwaggerMethod )
   myGet = () => {
     // Route method
   }
 
-  @SwMethod({
-      httpMethod: HttpMethod.POST,
-      route: {
-        name: 'Sub-route name',
-        parent: mySwaggerRoute,
-      } as SwaggerRoute,
-      name: 'myPost',
-      summary: 'Summary of the method',
-      description: 'Description of the method',
-      security: SwaggerSecurityScheme.BEARER,
-      tags: [mySwaggerTag],
-      requestBody: {
+  @SwMethod( {
+    httpMethod: HttpMethod.POST,
+    route: {
+      name: 'Sub-route name',
+      parent: mySwaggerRoute,
+    } as SwaggerRoute,
+    name: 'myPost',
+    summary: 'Summary of the method',
+    description: 'Description of the method',
+    security: SwaggerSecurityScheme.BEARER,
+    tags: [ mySwaggerTag ],
+    requestBody: {
+      content: {
+        schema: {
+          name: 'MySchema',
+          route: mySwaggerRoute,
+        } as SwaggerSchema,
+      },
+      required: true,
+    } as SwaggerRequestBody,
+    responses: [
+      {
         content: {
           schema: {
             name: 'MySchema',
             route: mySwaggerRoute,
           } as SwaggerSchema,
         },
-        required: true,
-      } as SwaggerRequestBody,
-      responses: [
-        {
-          content: {
-            schema: {
-              name: 'MySchema',
-              route: mySwaggerRoute,
-            } as SwaggerSchema,
-          },
-          responseCode: 201,
-          description: 'Created',
-        } as SwaggerResponse,
-      ],
-    } as SwaggerMethod)
+        responseCode: 201,
+        description: 'Created',
+      } as SwaggerResponse,
+    ],
+  } as SwaggerMethod )
   myPost = () => {
     // Route method
   }
 
-  @SwMethod({
-      httpMethod: HttpMethod.PUT,
-      route: {
-        name: 'Sub-route name',
-        parent: mySwaggerRoute,
-      } as SwaggerRoute,
-      name: 'myPut',
-      summary: 'Summary of the method',
-      description: 'Description of the method',
-      security: SwaggerSecurityScheme.BEARER,
-      tags: [mySwaggerTag],
-      requestBody: {
+  @SwMethod( {
+    httpMethod: HttpMethod.PUT,
+    route: {
+      name: 'Sub-route name',
+      parent: mySwaggerRoute,
+    } as SwaggerRoute,
+    name: 'myPut',
+    summary: 'Summary of the method',
+    description: 'Description of the method',
+    security: SwaggerSecurityScheme.BEARER,
+    tags: [ mySwaggerTag ],
+    requestBody: {
+      content: {
+        schema: {
+          name: 'MySchema',
+          route: mySwaggerRoute,
+        } as SwaggerSchema,
+      },
+      required: true,
+    } as SwaggerRequestBody,
+    responses: [
+      {
         content: {
           schema: {
             name: 'MySchema',
             route: mySwaggerRoute,
           } as SwaggerSchema,
         },
-        required: true,
-      } as SwaggerRequestBody,
-      responses: [
-        {
-          content: {
-            schema: {
-              name: 'MySchema',
-              route: mySwaggerRoute,
-            } as SwaggerSchema,
-          },
-          responseCode: 200,
-          description: 'Updated',
-        } as SwaggerResponse,
-      ],
-    } as SwaggerMethod)
+        responseCode: 200,
+        description: 'Updated',
+      } as SwaggerResponse,
+    ],
+  } as SwaggerMethod )
   myPut = () => {
     // Route method
   }
 
-  @SwMethod({
-      httpMethod: HttpMethod.PATCH,
-      route: {
-        name: 'Sub-route name',
-        parent: mySwaggerRoute,
-      } as SwaggerRoute,
-      name: 'myPatch',
-      summary: 'Summary of the method',
-      description: 'Description of the method',
-      security: SwaggerSecurityScheme.BEARER,
-      tags: [mySwaggerTag],
-      requestBody: {
+  @SwMethod( {
+    httpMethod: HttpMethod.PATCH,
+    route: {
+      name: 'Sub-route name',
+      parent: mySwaggerRoute,
+    } as SwaggerRoute,
+    name: 'myPatch',
+    summary: 'Summary of the method',
+    description: 'Description of the method',
+    security: SwaggerSecurityScheme.BEARER,
+    tags: [ mySwaggerTag ],
+    requestBody: {
+      content: {
+        schema: {
+          name: 'MyPatchSchema',
+          route: mySwaggerRoute,
+        } as SwaggerSchema,
+      },
+      required: true,
+    } as SwaggerRequestBody,
+    responses: [
+      {
         content: {
           schema: {
-            name: 'MyPatchSchema',
+            name: 'MySchema',
             route: mySwaggerRoute,
           } as SwaggerSchema,
         },
-        required: true,
-      } as SwaggerRequestBody,
-      responses: [
-        {
-          content: {
-            schema: {
-              name: 'MySchema',
-              route: mySwaggerRoute,
-            } as SwaggerSchema,
-          },
-          responseCode: 200,
-          description: 'Updated',
-        } as SwaggerResponse,
-      ],
-    } as SwaggerMethod)
+        responseCode: 200,
+        description: 'Updated',
+      } as SwaggerResponse,
+    ],
+  } as SwaggerMethod )
   myPatch = () => {
     // Route method
   }
 
-  @SwMethod({
-      httpMethod: HttpMethod.DELETE,
-      route: {
-        name: 'Sub-route name',
-        parent: mySwaggerRoute,
-      } as SwaggerRoute,
-      name: 'myDelete',
-      summary: 'Summary of the method',
-      description: 'Description of the method',
-      security: SwaggerSecurityScheme.BEARER,
-      tags: [mySwaggerTag],
-      parameterSchemas: ['MyDeleteSchema'],
-      responses: [
-        {
-          content: {
-            schema: {
-              name: 'MySchema',
-              route: mySwaggerRoute,
-            } as SwaggerSchema,
-          },
-          responseCode: 200,
-          description: 'Updated',
-        } as SwaggerResponse,
-      ],
-    } as SwaggerMethod)
+  @SwMethod( {
+    httpMethod: HttpMethod.DELETE,
+    route: {
+      name: 'Sub-route name',
+      parent: mySwaggerRoute,
+    } as SwaggerRoute,
+    name: 'myDelete',
+    summary: 'Summary of the method',
+    description: 'Description of the method',
+    security: SwaggerSecurityScheme.BEARER,
+    tags: [ mySwaggerTag ],
+    parameterSchemas: [ 'MyDeleteSchema' ],
+    responses: [
+      {
+        content: {
+          schema: {
+            name: 'MySchema',
+            route: mySwaggerRoute,
+          } as SwaggerSchema,
+        },
+        responseCode: 200,
+        description: 'Updated',
+      } as SwaggerResponse,
+    ],
+  } as SwaggerMethod )
   myDelete = () => {
     // Route method
   }
-  
+
 }
 ```
 
@@ -535,12 +537,12 @@ This codeblock will generate all Swagger Documents by reading decorators.
 Change 'app' with the folder name where you want to keep and load Swagger Documents
 
 ```ts
-if (process.env.OTH_SWAGGER_ON_GENERATION === 'true') {
+if ( process.env.OTH_SWAGGER_ON_GENERATION === 'true' ) {
   SwaggerDocumentation.getInstance().generateDocument(
-    Path.join(__dirname, 'app')
+      Path.join( __dirname, 'app' )
   );
 
-  process.exit(1);
+  process.exit( 1 );
 }
 ```
 
@@ -561,15 +563,15 @@ npm i swagger-ui-express
 
 ```ts
 if (
-  process.env.OTH_SWAGGER_ON_GENERATION !== 'true'
+    process.env.OTH_SWAGGER_ON_GENERATION !== 'true'
 ) {
-  const { SwaggerSpec } = require('./app/swagger/index.swagger');
-  const swaggerUi = require('swagger-ui-express');
+  const { SwaggerSpec } = require( './app/swagger/index.swagger' );
+  const swaggerUi = require( 'swagger-ui-express' );
   const swaggerSpecification = new SwaggerSpec();
   app.use(
-    '/docs',
-    swaggerUi.serve,
-    swaggerUi.setup(swaggerSpecification.getSpec())
+      '/docs',
+      swaggerUi.serve,
+      swaggerUi.setup( swaggerSpecification.getSpec() )
   );
 }
 ```

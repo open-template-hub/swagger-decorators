@@ -11,20 +11,20 @@ import { SwaggerRoute } from '../interface/swagger-route.interface';
  * @param isParameterSchema True if the schema is parameter schema
  * @returns
  */
-export function SwSchema(route: SwaggerRoute, isParameterSchema?: boolean) {
-  return <T extends { new (...args: any[]): {} }>(constructor: T) => {
-    SwaggerDocumentation.getInstance().addSchema({
+export function SwSchema( route: SwaggerRoute, isParameterSchema?: boolean ) {
+  return <T extends { new( ...args: any[] ): {} }>( constructor: T ) => {
+    SwaggerDocumentation.getInstance().addSchema( {
       name: constructor.name,
       route: route,
       type: isParameterSchema
-        ? SwaggerSchemaType.PARAMETER_SCHEMA
-        : SwaggerSchemaType.PROPERTY_SCHEMA,
-    });
+          ? SwaggerSchemaType.PARAMETER_SCHEMA
+          : SwaggerSchemaType.PROPERTY_SCHEMA,
+    } );
 
     var inst = new constructor();
-    var propNames = Object.getOwnPropertyNames(inst);
-    for (let key of propNames) {
-      const descriptor = Object.getOwnPropertyDescriptor(inst, key);
+    var propNames = Object.getOwnPropertyNames( inst );
+    for ( let key of propNames ) {
+      const descriptor = Object.getOwnPropertyDescriptor( inst, key );
       var doc = {
         name: key,
         schema: constructor.name,
@@ -33,13 +33,13 @@ export function SwSchema(route: SwaggerRoute, isParameterSchema?: boolean) {
         type: typeof descriptor?.value,
       };
 
-      if (isParameterSchema) {
+      if ( isParameterSchema ) {
         SwaggerDocumentation.getInstance().addOrUpdateParameter(
-          doc as SwaggerParameter
+            doc as SwaggerParameter
         );
       } else {
         SwaggerDocumentation.getInstance().addOrUpdateProperty(
-          doc as SwaggerProperty
+            doc as SwaggerProperty
         );
       }
     }

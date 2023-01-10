@@ -5,7 +5,7 @@
 </p>
 
 <h1 align="center">
-Open Template Hub - Swagger Decorators v4
+Open Template Hub - Swagger Decorators v5
 </h1>
 
 [![GitHubRepo](https://img.shields.io/badge/GitHub-Repository-24292e.svg?style=for-the-badge&logo=github)](https://github.com/open-template-hub/swagger-decorators)
@@ -14,16 +14,17 @@ Open Template Hub - Swagger Decorators v4
 This library contains methods and decorators to ease and automate [Swagger](https://swagger.io) documentation.
 
 ## Topics
+
 * [About the NPM Package](#about-the-npm-package)
-  * [Package Installation](#package-installation)
+    * [Package Installation](#package-installation)
 * [Using OTH Swagger Decorators](#using-oth-swagger-decorators)
-  * [@SwRoute](#swroute)
-  * [@SwTag](#swtag)
-  * [@SwSchema](#swschema)
-  * [@SwProp](#swprop)
-  * [@SwParam](#swparam)
-  * [@SwMethod](#swmethod)
-  * [Full Route Example Including All Method Types](#full-route-example-including-all-method-types)
+    * [@SwRoute](#swroute)
+    * [@SwTag](#swtag)
+    * [@SwSchema](#swschema)
+    * [@SwProp](#swprop)
+    * [@SwParam](#swparam)
+    * [@SwMethod](#swmethod)
+    * [Full Route Example Including All Method Types](#full-route-example-including-all-method-types)
 * [Automation of Swagger Document Generation](#automation-of-swagger-document-generation)
 
 ## About the NPM Package
@@ -195,6 +196,7 @@ export class MyParameterSchema {
 ```
 
 ### @SwMethod
+
 This decorator helps you to define new method and can be specified on top of route Methods.
 This decorator takes only one argument which is SwaggerMethod.
 
