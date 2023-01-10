@@ -6,11 +6,12 @@ import { SwaggerMethod } from '../interface/swagger-method.interface';
  * @param method Swagger Method
  * @returns
  */
-export function SwMethod(method: SwaggerMethod) {
-  SwaggerDocumentation.getInstance().addMethod(method);
+export function SwMethod( method: SwaggerMethod ) {
+  SwaggerDocumentation.getInstance().addMethod( method );
   return <T>(
-    target: Object,
-    propertyKey: string | symbol,
-    descriptor?: TypedPropertyDescriptor<T>
-  ) => {};
+      target: Object,
+      propertyKey: string | symbol,
+      descriptor?: TypedPropertyDescriptor<T>
+  ) => {
+  };
 }

@@ -1,3 +1,6 @@
+import * as fs from 'fs';
+import * as Path from 'path';
+import * as prettier from 'prettier';
 import {
   SW_METHOD_FILE_EXTENSION,
   SW_METHOD_FOLDER_NAME,
@@ -17,14 +20,11 @@ import {
   SW_TAG_SUFFIX,
 } from '../app.constant';
 import { SwaggerDocumentType } from '../enum/swagger-document-type.enum';
-import { SwaggerRoutable } from '../interface/swagger-routable.interface';
-import * as fs from 'fs';
-import * as prettier from 'prettier';
-import * as Path from 'path';
-import { SwaggerRoute } from '../interface/swagger-route.interface';
-import { SwaggerTemplateType } from '../enum/swagger-template-type.enum';
-import { SwaggerWithContent } from '../interface/swagger-with-content.interface';
 import { SwaggerSecurityScheme } from '../enum/swagger-security-scheme.enum';
+import { SwaggerTemplateType } from '../enum/swagger-template-type.enum';
+import { SwaggerRoutable } from '../interface/swagger-routable.interface';
+import { SwaggerRoute } from '../interface/swagger-route.interface';
+import { SwaggerWithContent } from '../interface/swagger-with-content.interface';
 
 export class FileUtil {
   /**
@@ -32,8 +32,8 @@ export class FileUtil {
    * @param fileName File name with extension
    * @returns File name without extension
    */
-  getFileNameWithoutExtension = (fileName: string) => {
-    return Path.parse(fileName).name;
+  getFileNameWithoutExtension = ( fileName: string ) => {
+    return Path.parse( fileName ).name;
   };
 
   /**
@@ -41,10 +41,10 @@ export class FileUtil {
    * @param document Unformatted document
    * @returns Formatted document
    */
-  formatDocument = (document: string) => {
-    return prettier.format(document, {
+  formatDocument = ( document: string ) => {
+    return prettier.format( document, {
       parser: 'typescript',
-    });
+    } );
   };
 
   /**
@@ -52,12 +52,12 @@ export class FileUtil {
    * @param type Swagger template type
    * @returns Template content
    */
-  getTemplateContent = (type: SwaggerTemplateType) => {
+  getTemplateContent = ( type: SwaggerTemplateType ) => {
     var templateFilePath = Path.resolve(
-      __dirname,
-      '../template/' + type.toString() + '.template'
+        __dirname,
+        '../template/' + type.toString() + '.template'
     );
-    return fs.readFileSync(templateFilePath, 'utf8');
+    return fs.readFileSync( templateFilePath, 'utf8' );
   };
 
   /**
@@ -66,9 +66,9 @@ export class FileUtil {
    * @param type Swagger document type
    * @returns Folder path
    */
-  getFolderPath = (swaggerPath: string, type: SwaggerDocumentType) => {
+  getFolderPath = ( swaggerPath: string, type: SwaggerDocumentType ) => {
     var folderPath = '';
-    switch (type) {
+    switch ( type ) {
       case SwaggerDocumentType.SCHEMA:
         folderPath = SW_SCHEMA_FOLDER_NAME;
         break;
@@ -83,7 +83,7 @@ export class FileUtil {
         break;
     }
 
-    return Path.join(swaggerPath, folderPath);
+    return Path.join( swaggerPath, folderPath );
   };
 
   /**
@@ -91,8 +91,8 @@ export class FileUtil {
    * @param type Swagger document type
    * @returns Index file name
    */
-  getIndexFileName = (type: SwaggerDocumentType) => {
-    switch (type) {
+  getIndexFileName = ( type: SwaggerDocumentType ) => {
+    switch ( type ) {
       case SwaggerDocumentType.SCHEMA:
         return 'index' + SW_SCHEMA_FILE_EXTENSION;
       case SwaggerDocumentType.TAG:
@@ -111,10 +111,10 @@ export class FileUtil {
    * @param withContent Swagger content
    * @returns Formatted swagger example
    */
-  getSwaggerExample = (withContent: SwaggerWithContent) => {
-    if (withContent.type === 'string') return "'" + withContent.example + "'";
-    else if (withContent.type === 'object')
-      return JSON.stringify(withContent.example);
+  getSwaggerExample = ( withContent: SwaggerWithContent ) => {
+    if ( withContent.type === 'string' ) return '\'' + withContent.example + '\'';
+    else if ( withContent.type === 'object' )
+      return JSON.stringify( withContent.example );
 
     return withContent.example;
   };
@@ -124,8 +124,8 @@ export class FileUtil {
    * @param type Swagger document type
    * @returns Index property name
    */
-  getIndexPropName = (type: SwaggerDocumentType) => {
-    switch (type) {
+  getIndexPropName = ( type: SwaggerDocumentType ) => {
+    switch ( type ) {
       case SwaggerDocumentType.SCHEMA:
         return SW_SCHEMA_INDEX_PROPERTY_NAME;
       case SwaggerDocumentType.TAG:
@@ -144,12 +144,12 @@ export class FileUtil {
    * @param routable Swagger Routable
    * @returns All attached routes
    */
-  getAttachedRoutes = (routable: Array<SwaggerRoutable>) => {
+  getAttachedRoutes = ( routable: Array<SwaggerRoutable> ) => {
     return routable
-      .map((r) => {
-        return r.route.name;
-      })
-      .filter((v, i, a) => a.indexOf(v) === i);
+    .map( ( r ) => {
+      return r.route.name;
+    } )
+    .filter( ( v, i, a ) => a.indexOf( v ) === i );
   };
 
   /**
@@ -159,16 +159,16 @@ export class FileUtil {
    * @param ext File extension
    * @returns Created document file path
    */
-  createDocumentFileIfNotExist = (path: string, route: string, ext: string) => {
+  createDocumentFileIfNotExist = ( path: string, route: string, ext: string ) => {
     var filePath = Path.join(
-      path,
-      route
-        .replace(/[<>:"\/\\|?*]+/g, '')
+        path,
+        route
+        .replace( /[<>:"\/\\|?*]+/g, '' )
         .toLowerCase()
         .trim() + ext
     );
 
-    this.createFolderIfNotExist(filePath);
+    this.createFolderIfNotExist( filePath );
 
     return filePath;
   };
@@ -179,12 +179,12 @@ export class FileUtil {
    * @param type Swagger document type
    * @returns Safe property name with suffix
    */
-  getSafeTsPropertyName = (propName: string, type: SwaggerDocumentType) => {
+  getSafeTsPropertyName = ( propName: string, type: SwaggerDocumentType ) => {
     const SAFE_STRING_REPLACE_REGEXP =
-      /[^\p{Script=Latin}\p{Zs}\p{M}\p{Nd}'\s-]/u;
-    var propName = propName.split(SAFE_STRING_REPLACE_REGEXP).join('');
-    propName = propName.charAt(0).toUpperCase() + propName.slice(1);
-    switch (type) {
+        /[^\p{Script=Latin}\p{Zs}\p{M}\p{Nd}'\s-]/u;
+    var propName = propName.split( SAFE_STRING_REPLACE_REGEXP ).join( '' );
+    propName = propName.charAt( 0 ).toUpperCase() + propName.slice( 1 );
+    switch ( type ) {
       case SwaggerDocumentType.SCHEMA:
         return propName + SW_SCHEMA_SUFFIX;
       case SwaggerDocumentType.TAG:
@@ -203,10 +203,10 @@ export class FileUtil {
    * @param route Swagger route
    * @returns Main route
    */
-  getMainRoute = (route: SwaggerRoute): string => {
-    if (!route.parent) return route.name;
+  getMainRoute = ( route: SwaggerRoute ): string => {
+    if ( !route.parent ) return route.name;
 
-    return this.getMainRoute(route.parent);
+    return this.getMainRoute( route.parent );
   };
 
   /**
@@ -215,11 +215,11 @@ export class FileUtil {
    * @param fullRoute Full route
    * @returns Full method path
    */
-  getFullMethodPath = (route: SwaggerRoute, fullRoute: string): string => {
+  getFullMethodPath = ( route: SwaggerRoute, fullRoute: string ): string => {
     fullRoute =
-      (route.name.startsWith('/') ? route.name : '/' + route.name) + fullRoute;
-    if (!route.parent) return fullRoute;
-    return this.getFullMethodPath(route.parent, fullRoute);
+        ( route.name.startsWith( '/' ) ? route.name : '/' + route.name ) + fullRoute;
+    if ( !route.parent ) return fullRoute;
+    return this.getFullMethodPath( route.parent, fullRoute );
   };
 
   /**
@@ -227,10 +227,10 @@ export class FileUtil {
    * @param scheme Security Scheme
    * @returns Applicable Security Scheme
    */
-  getSecurityScheme = (scheme?: SwaggerSecurityScheme) => {
-    if (!scheme) return '';
+  getSecurityScheme = ( scheme?: SwaggerSecurityScheme ) => {
+    if ( !scheme ) return '';
 
-    switch (scheme) {
+    switch ( scheme ) {
       case SwaggerSecurityScheme.BEARER:
         return '{ BearerAuth: [] }';
       default:
@@ -242,15 +242,15 @@ export class FileUtil {
    * Creates folder if it does not exist
    * @param filePath File path
    */
-  createFolderIfNotExist = (filePath: string) => {
-    var folderName = Path.dirname(filePath);
+  createFolderIfNotExist = ( filePath: string ) => {
+    var folderName = Path.dirname( filePath );
 
     try {
-      if (!fs.existsSync(folderName)) {
-        fs.mkdirSync(folderName);
+      if ( !fs.existsSync( folderName ) ) {
+        fs.mkdirSync( folderName );
       }
-    } catch (err) {
-      console.error(err);
+    } catch ( err ) {
+      console.error( err );
     }
   };
 }

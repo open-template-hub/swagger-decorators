@@ -6,7 +6,8 @@ import { SwaggerTag } from '../interface/swagger-tag.interface';
  * @param tag Swagger tag
  * @returns
  */
-export function SwTag(tag: SwaggerTag) {
-  SwaggerDocumentation.getInstance().addTag(tag);
-  return <T extends { new (...args: any[]): {} }>(constructor: T) => {};
+export function SwTag( tag: SwaggerTag ) {
+  SwaggerDocumentation.getInstance().addTag( tag );
+  return <T extends { new( ...args: any[] ): {} }>( constructor: T ) => {
+  };
 }

@@ -9,17 +9,17 @@ import { ParameterIn } from '../enum/parameter-in.enum';
  * @returns
  */
 export function SwParam(
-  comment: string,
-  paramIn: ParameterIn,
-  required?: boolean
+    comment: string,
+    paramIn: ParameterIn,
+    required?: boolean
 ) {
-  return (target: Object, propertyKey: string | symbol) => {
-    SwaggerDocumentation.getInstance().addOrUpdateParameter({
+  return ( target: Object, propertyKey: string | symbol ) => {
+    SwaggerDocumentation.getInstance().addOrUpdateParameter( {
       name: propertyKey.toString(),
       schema: target.constructor.name,
       description: comment,
       required,
       paramIn,
-    });
+    } );
   };
 }
