@@ -1,5 +1,6 @@
 export enum SwaggerTemplateType {
-  INDEX = 'index',
+  INDEX_OBJECT = 'index-object',
+  INDEX_ARRAY = 'index-array',
   METHOD = 'method',
   METHODS = 'methods',
   METHOD_PARAMETER = 'method-parameter',

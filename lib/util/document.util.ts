@@ -647,14 +647,25 @@ export class DocumentUtil {
    * @param swaggerPath Swagger path
    */
   generateIndexDocuments = ( swaggerPath: string ) => {
-    const indexTemplateFile = this.getSwaggerTemplateContent(
-        SwaggerTemplateType.INDEX
+    const indexObjectTemplateFile = this.getSwaggerTemplateContent(
+        SwaggerTemplateType.INDEX_OBJECT
+    );
+    const indexArrayTemplateFile = this.getSwaggerTemplateContent(
+        SwaggerTemplateType.INDEX_ARRAY
     );
 
     this.indexDocuments.forEach( ( swid ) => {
-      var propName = this.fileUtil.getIndexPropName( swid.type );
-
-      var indexDocument = indexTemplateFile
+      let propName = this.fileUtil.getIndexPropName( swid.type );
+      let indexDocument
+      switch ( swid.type ) {
+        case SwaggerDocumentType.TAG:
+          indexDocument = indexArrayTemplateFile;
+          break;
+        default:
+          indexDocument = indexObjectTemplateFile;
+          break;
+      }
+      indexDocument = indexDocument
       .replace( '{{IMPORTS}}', swid.imports as string )
       .replace( '{{PROPERTY_NAME}}', propName )
       .replace( '{{ITEMS}}', swid.propertyNames as string );
