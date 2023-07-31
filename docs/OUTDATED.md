@@ -15,6 +15,7 @@ Following packages are not updated in the develop branch yet. So, if you want to
 
 | Package | Current | Wanted | Latest | Location |
 | --- | --- | --- | --- | --- |
+| @types/prettier | 2.7.3 | 2.7.3 | 3.0.0 | node_modules/@types/prettier |
 | cpy-cli | 4.2.0 | 4.2.0 | 5.0.0 | node_modules/cpy-cli |
 | prettier | 2.8.8 | 2.8.8 | 3.0.0 | node_modules/prettier |
 | typescript | 4.9.5 | 4.9.5 | 5.1.6 | node_modules/typescript |
